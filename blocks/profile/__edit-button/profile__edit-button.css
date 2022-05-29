@@ -8,6 +8,11 @@
     box-sizing: border-box;
     background-color: transparent;
     margin-top: 29px;
+    transition: opacity 0.4s;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.4;
 }
 
 @media screen and (max-width: 767px) {
