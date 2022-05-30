@@ -10,6 +10,7 @@
     line-height: 22px;
     border-radius: 2px;
     border: none;
+    cursor: pointer;
 }
 
 .popup__submit-button:hover {

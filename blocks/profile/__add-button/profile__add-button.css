@@ -9,6 +9,7 @@
     background-color: transparent;
     margin: 29px 0 0 auto;
     padding: 0;
+    cursor: pointer;
     transition: opacity 0.4s;
 }
 
