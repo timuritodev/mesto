@@ -11,6 +11,7 @@
     transition: opacity 0.4s;
     position: absolute;
     right: -40px;
+    padding: 0;
     top: -38px;
     cursor: pointer;
 }
