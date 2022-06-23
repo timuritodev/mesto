@@ -25,23 +25,23 @@ const initialCards = [{
 ];
 
 const openEditButton = document.querySelector('.profile__edit-button');
-const popup__edit = document.querySelector('.popup_edit');
+const popupEdit = document.querySelector('.popup_edit');
 const closeEditButton = document.querySelector('.popup__close-button');
 const editForm = document.querySelector('.popup__info');
-let fioInput = document.querySelector('.popup__input_fio');
-let jobInput = document.querySelector('.popup__input_job');
-let fio = document.querySelector('.profile__title');
-let job = document.querySelector('.profile__subtitle');
+const fioInput = document.querySelector('.popup__input_fio');
+const jobInput = document.querySelector('.popup__input_job');
+const fio = document.querySelector('.profile__title');
+const job = document.querySelector('.profile__subtitle');
 
 const openAddButton = document.querySelector('.profile__add-button');
-const popup__add = document.querySelector('.popup_add');
+const popupAdd = document.querySelector('.popup_add');
 const closeAddButton = document.querySelector('.popup__close-button-add');
 const addForm = document.querySelector('.popup__info_add');
 const titleInput = document.querySelector('.popup__input_title');
 const urlInput = document.querySelector('.popup__input_url');
 
 
-const popup__photo = document.querySelector('.popup_photo');
+const popupPhoto = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
 const popupDescription = document.querySelector('.popup__description');
 const closePhotoButton = document.querySelector('.popup__close-button-photo');
@@ -49,48 +49,56 @@ const closePhotoButton = document.querySelector('.popup__close-button-photo');
 const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
 
+function openPopup(popup) {
+    popup.classList.remove('popup_hidden');
+}
+
+function closePopup(popup) {
+    popup.classList.add('popup_hidden')
+}
+
 openEditButton.addEventListener('click', function() {
-    popup__edit.classList.remove('popup_hidden');
+    openPopup(popupEdit);
     fioInput.value = fio.textContent;
     jobInput.value = job.textContent;
 })
 
 closeEditButton.addEventListener('click', function() {
-    popup__edit.classList.add('popup_hidden');
+    closePopup(popupEdit);
 })
 
 editForm.addEventListener('submit', function(e) {
     e.preventDefault();
     fio.textContent = fioInput.value;
     job.textContent = jobInput.value;
-    popup__edit.classList.add('popup_hidden');
+    closePopup(popupEdit);
 })
 
 openAddButton.addEventListener('click', function() {
-    popup__add.classList.remove('popup_hidden');
+    openPopup(popupAdd);
 })
 
 closeAddButton.addEventListener('click', function() {
-    popup__add.classList.add('popup_hidden');
+    closePopup(popupAdd);
 })
 
-function Like(e) {
+function handleLike(e) {
     e.target.classList.toggle('element__like-button_active');
 }
 
-function Delete(e) {
+function handleDelete(e) {
     e.target.closest('.element').remove();
 }
 
-function Photo(image, description) {
+function handlePhoto(image, description) {
     popupImage.src = image;
     popupImage.alt = description;
     popupDescription.textContent = description;
-    popup__photo.classList.remove('popup_hidden');
+    openPopup(popupPhoto);
 }
 
 closePhotoButton.addEventListener('click', function() {
-    popup__photo.classList.add('popup_hidden');
+    closePopup(popupPhoto);
 })
 
 function addElement(title, link) {
@@ -102,7 +110,7 @@ addForm.addEventListener('submit', function(e) {
     e.preventDefault();
     addElement(titleInput.value, urlInput.value);
     addForm.reset();
-    popup__add.classList.add('popup_hidden');
+    closePopup(popupAdd);
 })
 
 function createElement(e) {
@@ -114,9 +122,9 @@ function createElement(e) {
     elementImage.src = e.link;
     elementImage.alt = e.name;
     elementTitle.textContent = e.name;
-    elementLike.addEventListener('click', Like);
-    elementDelete.addEventListener('click', Delete);
-    elementImage.addEventListener('click', () => Photo(e.link, e.name));
+    elementLike.addEventListener('click', handleLike);
+    elementDelete.addEventListener('click', handleDelete);
+    elementImage.addEventListener('click', () => handlePhoto(e.link, e.name));
     return element;
 }
 
