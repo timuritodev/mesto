@@ -59,13 +59,13 @@ const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
 
 function openPopup(popup) {
-    popup.classList.remove('popup_hidden');
+    popup.classList.add('popup_hidden');
     document.addEventListener('click', CloseByClick);
     document.addEventListener('keydown', CloseByEsc);
 }
 
 function closePopup(popup) {
-    popup.classList.add('popup_hidden');
+    popup.classList.remove('popup_hidden');
     document.removeEventListener('click', CloseByClick);
     document.removeEventListener('keydown', CloseByEsc);
 }

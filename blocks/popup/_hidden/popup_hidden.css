@@ -1,4 +1,4 @@
 .popup_hidden {
-    visibility: hidden;
-    opacity: 0;
+    visibility: visible;
+    opacity: 1;
 }
