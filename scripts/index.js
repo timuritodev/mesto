@@ -24,6 +24,15 @@ const initialCards = [{
     }
 ];
 
+const validation = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}
+
 const openEditButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
 const closeEditButton = document.querySelector('.popup__close-button');
@@ -78,6 +87,7 @@ openEditButton.addEventListener('click', function() {
     openPopup(popupEdit);
     fioInput.value = fio.textContent;
     jobInput.value = job.textContent;
+    resetForm(validation, popupEdit);
 })
 
 closeEditButton.addEventListener('click', function() {
@@ -93,6 +103,7 @@ editForm.addEventListener('submit', function(e) {
 
 openAddButton.addEventListener('click', function() {
     openPopup(popupAdd);
+    resetForm(validation, popupAdd);
 })
 
 closeAddButton.addEventListener('click', function() {
