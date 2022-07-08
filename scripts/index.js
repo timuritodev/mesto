@@ -60,23 +60,23 @@ const elements = document.querySelector('.elements');
 
 function openPopup(popup) {
     popup.classList.add('popup_hidden');
-    document.addEventListener('click', CloseByClick);
-    document.addEventListener('keydown', CloseByEsc);
+    document.addEventListener('click', closeByClick);
+    document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_hidden');
-    document.removeEventListener('click', CloseByClick);
-    document.removeEventListener('keydown', CloseByEsc);
+    document.removeEventListener('click', closeByClick);
+    document.removeEventListener('keydown', closeByEsc);
 }
 
-function CloseByClick(e) {
+function closeByClick(e) {
     if (e.target.classList.contains('popup')) {
         closePopup(e.target);
     }
 }
 
-function CloseByEsc(e) {
+function closeByEsc(e) {
     if (e.key === 'Escape') {
         const popup = document.querySelector('.popup_hidden');
         closePopup(popup);
