@@ -1,3 +1,5 @@
+import { Card } from "./Card.js";
+
 const initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -110,15 +112,22 @@ closeAddButton.addEventListener('click', function() {
     closePopup(popupAdd);
 })
 
-function handleLike(e) {
-    e.target.classList.toggle('element__like-button_active');
+function createElement(e) {
+    const element = new Card(
+        e.name,
+        e.link,
+        '.template__element'
+    );
+
+    return element.generateCard();
 }
 
-function handleDelete(e) {
-    e.target.closest('.element').remove();
+function addElement(title, link) {
+    const newElement = createElement({ name: title, link: link });
+    elements.prepend(newElement);
 }
 
-function handlePhoto(image, description) {
+export function handlePhoto(image, description) {
     popupImage.src = image;
     popupImage.alt = description;
     popupDescription.textContent = description;
@@ -129,11 +138,6 @@ closePhotoButton.addEventListener('click', function() {
     closePopup(popupPhoto);
 })
 
-function addElement(title, link) {
-    const newElement = createElement({ name: title, link: link });
-    elements.prepend(newElement);
-}
-
 addForm.addEventListener('submit', function(e) {
     e.preventDefault();
     addElement(titleInput.value, urlInput.value);
@@ -141,24 +145,6 @@ addForm.addEventListener('submit', function(e) {
     closePopup(popupAdd);
 })
 
-function createElement(e) {
-    const element = templateElement.querySelector('.element').cloneNode(true);
-    const elementImage = element.querySelector('.element__image');
-    const elementTitle = element.querySelector('.element__title');
-    const elementLike = element.querySelector('.element__like-button');
-    const elementDelete = element.querySelector('.element__delete-button');
-    elementImage.src = e.link;
-    elementImage.alt = e.name;
-    elementTitle.textContent = e.name;
-    elementLike.addEventListener('click', handleLike);
-    elementDelete.addEventListener('click', handleDelete);
-    elementImage.addEventListener('click', () => handlePhoto(e.link, e.name));
-    return element;
-}
-
-function render() {
-    initialCards.forEach(item =>
-        addElement(item.name, item.link));
-}
-
-render();
+initialCards.forEach((item) => {
+    addElement(item.name, item.link);
+});
