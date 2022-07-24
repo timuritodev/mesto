@@ -27,7 +27,7 @@ const initialCards = [{
     }
 ];
 
-const validSettings = {
+const validation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
@@ -60,9 +60,9 @@ const closePhotoButton = document.querySelector('.popup__close-button-photo');
 const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
 
-const validPopupEdit = new FormValidator(validSettings, popupEdit);
+const validPopupEdit = new FormValidator(validation, popupEdit);
 validPopupEdit.enableValidation();
-const validPopupAdd = new FormValidator(validSettings, popupAdd);
+const validPopupAdd = new FormValidator(validation, popupAdd);
 validPopupAdd.enableValidation();
 
 function openPopup(popup) {
@@ -118,12 +118,7 @@ closeAddButton.addEventListener('click', function() {
 })
 
 function createElement(e) {
-    const element = new Card(
-        e.name,
-        e.link,
-        '.template__element'
-    );
-
+    const element = new Card(e.name, e.link, '.template__element');
     return element.generateCard();
 }
 

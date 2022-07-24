@@ -1,5 +1,3 @@
-/////////////////////////////////
-
 export class FormValidator {
     constructor(validSettings, formSelector) {
         this._validSettings = validSettings;
@@ -13,7 +11,7 @@ export class FormValidator {
         );
     }
 
-    _showinputError(inputElement, errorMessage) {
+    _showInputError(inputElement, errorMessage) {
         const errorElement = this._formSelector.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._validSettings.inputErrorClass);
         errorElement.textContent = errorMessage;
@@ -31,14 +29,14 @@ export class FormValidator {
         if (!inputElement.validity.valid) {
             this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-            hideInputError(inputElement);
+            this._hideInputError(inputElement);
         }
     }
 
     _setEventListeners() {
         this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
-            inputElement.addEventListener('input', function() {
+            inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
                 this._toggleButtonState()
             });
