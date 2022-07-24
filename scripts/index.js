@@ -1,4 +1,5 @@
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 const initialCards = [{
         name: 'Архыз',
@@ -26,7 +27,7 @@ const initialCards = [{
     }
 ];
 
-const validation = {
+const validSettings = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
@@ -51,7 +52,6 @@ const addForm = document.querySelector('.popup__info_add');
 const titleInput = document.querySelector('.popup__input_title');
 const urlInput = document.querySelector('.popup__input_url');
 
-
 const popupPhoto = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
 const popupDescription = document.querySelector('.popup__description');
@@ -59,6 +59,11 @@ const closePhotoButton = document.querySelector('.popup__close-button-photo');
 
 const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
+
+const validPopupEdit = new FormValidator(validSettings, popupEdit);
+validPopupEdit.enableValidation();
+const validPopupAdd = new FormValidator(validSettings, popupAdd);
+validPopupAdd.enableValidation();
 
 function openPopup(popup) {
     popup.classList.add('popup_hidden');
@@ -89,7 +94,7 @@ openEditButton.addEventListener('click', function() {
     openPopup(popupEdit);
     fioInput.value = fio.textContent;
     jobInput.value = job.textContent;
-    resetForm(validation, popupEdit);
+    validPopupEdit.resetForm();
 })
 
 closeEditButton.addEventListener('click', function() {
@@ -105,7 +110,7 @@ editForm.addEventListener('submit', function(e) {
 
 openAddButton.addEventListener('click', function() {
     openPopup(popupAdd);
-    resetForm(validation, popupAdd);
+    validPopupAdd.resetForm();
 })
 
 closeAddButton.addEventListener('click', function() {
@@ -145,6 +150,9 @@ addForm.addEventListener('submit', function(e) {
     closePopup(popupAdd);
 })
 
-initialCards.forEach((item) => {
-    addElement(item.name, item.link);
-});
+function render() {
+    initialCards.forEach((item) =>
+        addElement(item.name, item.link));
+}
+
+render();
