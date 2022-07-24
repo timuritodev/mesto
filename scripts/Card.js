@@ -21,7 +21,8 @@ export class Card {
     }
 
     _handleDelete() {
-        this._element.closest('.element').remove();
+        this._element.remove();
+        this._element = null;
     }
 
     _handlePhoto() {

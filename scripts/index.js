@@ -1,31 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-
-const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+import { initialCards } from './data.js';
 
 const validation = {
     formSelector: '.popup__form',
@@ -36,26 +11,26 @@ const validation = {
     errorClass: 'popup__error_visible'
 }
 
-const openEditButton = document.querySelector('.profile__edit-button');
+const buttonOpenEdit = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
-const closeEditButton = document.querySelector('.popup__close-button');
+const ButtonCloseEdit = document.querySelector('.popup__close-button');
 const editForm = document.querySelector('.popup__info');
 const fioInput = document.querySelector('.popup__input_fio');
 const jobInput = document.querySelector('.popup__input_job');
 const fio = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 
-const openAddButton = document.querySelector('.profile__add-button');
+const ButtonOpenAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-const closeAddButton = document.querySelector('.popup__close-button-add');
-const addForm = document.querySelector('.popup__info_add');
+const ButtonCloseAdd = document.querySelector('.popup__close-button-add');
+const formAdd = document.querySelector('.popup__info_add');
 const titleInput = document.querySelector('.popup__input_title');
 const urlInput = document.querySelector('.popup__input_url');
 
 const popupPhoto = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
 const popupDescription = document.querySelector('.popup__description');
-const closePhotoButton = document.querySelector('.popup__close-button-photo');
+const ButtonClosePhoto = document.querySelector('.popup__close-button-photo');
 
 const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
@@ -90,14 +65,14 @@ function closeByEsc(e) {
     }
 }
 
-openEditButton.addEventListener('click', function() {
+buttonOpenEdit.addEventListener('click', function() {
     openPopup(popupEdit);
     fioInput.value = fio.textContent;
     jobInput.value = job.textContent;
     validPopupEdit.resetForm();
 })
 
-closeEditButton.addEventListener('click', function() {
+ButtonCloseEdit.addEventListener('click', function() {
     closePopup(popupEdit);
 })
 
@@ -108,12 +83,12 @@ editForm.addEventListener('submit', function(e) {
     closePopup(popupEdit);
 })
 
-openAddButton.addEventListener('click', function() {
+ButtonOpenAdd.addEventListener('click', function() {
     openPopup(popupAdd);
     validPopupAdd.resetForm();
 })
 
-closeAddButton.addEventListener('click', function() {
+ButtonCloseAdd.addEventListener('click', function() {
     closePopup(popupAdd);
 })
 
@@ -134,14 +109,14 @@ export function handlePhoto(image, description) {
     openPopup(popupPhoto);
 }
 
-closePhotoButton.addEventListener('click', function() {
+ButtonClosePhoto.addEventListener('click', function() {
     closePopup(popupPhoto);
 })
 
-addForm.addEventListener('submit', function(e) {
+formAdd.addEventListener('submit', function(e) {
     e.preventDefault();
     addElement(titleInput.value, urlInput.value);
-    addForm.reset();
+    formAdd.reset();
     closePopup(popupAdd);
 })
 
