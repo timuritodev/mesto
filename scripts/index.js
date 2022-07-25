@@ -13,16 +13,16 @@ const validation = {
 
 const buttonOpenEdit = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
-const ButtonCloseEdit = document.querySelector('.popup__close-button');
+const buttonCloseEdit = document.querySelector('.popup__close-button');
 const editForm = document.querySelector('.popup__info');
 const fioInput = document.querySelector('.popup__input_fio');
 const jobInput = document.querySelector('.popup__input_job');
 const fio = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 
-const ButtonOpenAdd = document.querySelector('.profile__add-button');
+const buttonOpenAdd = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('.popup_add');
-const ButtonCloseAdd = document.querySelector('.popup__close-button-add');
+const buttonCloseAdd = document.querySelector('.popup__close-button-add');
 const formAdd = document.querySelector('.popup__info_add');
 const titleInput = document.querySelector('.popup__input_title');
 const urlInput = document.querySelector('.popup__input_url');
@@ -30,7 +30,7 @@ const urlInput = document.querySelector('.popup__input_url');
 const popupPhoto = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
 const popupDescription = document.querySelector('.popup__description');
-const ButtonClosePhoto = document.querySelector('.popup__close-button-photo');
+const buttonClosePhoto = document.querySelector('.popup__close-button-photo');
 
 const templateElement = document.querySelector('.template__element').content;
 const elements = document.querySelector('.elements');
@@ -72,7 +72,7 @@ buttonOpenEdit.addEventListener('click', function() {
     validPopupEdit.resetForm();
 })
 
-ButtonCloseEdit.addEventListener('click', function() {
+buttonCloseEdit.addEventListener('click', function() {
     closePopup(popupEdit);
 })
 
@@ -83,12 +83,12 @@ editForm.addEventListener('submit', function(e) {
     closePopup(popupEdit);
 })
 
-ButtonOpenAdd.addEventListener('click', function() {
+buttonOpenAdd.addEventListener('click', function() {
     openPopup(popupAdd);
     validPopupAdd.resetForm();
 })
 
-ButtonCloseAdd.addEventListener('click', function() {
+buttonCloseAdd.addEventListener('click', function() {
     closePopup(popupAdd);
 })
 
@@ -109,7 +109,7 @@ export function handlePhoto(image, description) {
     openPopup(popupPhoto);
 }
 
-ButtonClosePhoto.addEventListener('click', function() {
+buttonClosePhoto.addEventListener('click', function() {
     closePopup(popupPhoto);
 })
 
