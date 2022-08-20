@@ -1,4 +1,4 @@
-import { handlePhoto } from "./index.js";
+import { handlePhoto } from "../pages/index.js";
 
 export class Card {
     constructor(title, link, cardSelector) {
