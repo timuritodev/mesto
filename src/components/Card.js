@@ -1,10 +1,9 @@
-import { handlePhoto } from "../pages/index.js";
-
 export class Card {
-    constructor(title, link, cardSelector) {
+    constructor(title, link, cardSelector, handlePhoto) {
         this._title = title;
         this._link = link;
         this._cardSelector = cardSelector;
+        this._handlePhoto = handlePhoto;
     }
 
     _getTemplate() {
@@ -25,10 +24,6 @@ export class Card {
         this._element = null;
     }
 
-    _handlePhoto() {
-        handlePhoto(this._link, this._title);
-    }
-
     _setEventListeners() {
         this._like.addEventListener('click', () => {
             this._handleLike();
@@ -39,7 +34,7 @@ export class Card {
         });
 
         this._image.addEventListener('click', () => {
-            this._handlePhoto();
+            this._handlePhoto(this._title, this._link);
         });
     }
 
