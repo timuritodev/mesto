@@ -12,6 +12,7 @@ export default class Userinfo {
     }
 
     setUserInfo(username, description) {
+        debugger
         this._username.textContent = username;
         this._description.textContent = description;
     }

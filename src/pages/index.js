@@ -51,8 +51,9 @@ function createElement(e) {
     return element.generateCard();
 }
 
-export function handlePhoto(description, image) {
-    popupImage.open(description, image);
+export function handlePhoto(image, description) {
+    debugger;
+    popupImage.open(image, description);
 }
 
 function editForm(e) {
