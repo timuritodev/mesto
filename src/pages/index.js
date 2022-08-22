@@ -62,7 +62,7 @@ function editForm(e) {
 }
 
 function formAdd(e) {
-    const element = createElement({ name: e.title, link: e.url }, '.elements');
+    const element = createElement({ name: e.name, link: e.link }, '.elements');
     section.addItem(element);
     popupAddForm.close();
 }
