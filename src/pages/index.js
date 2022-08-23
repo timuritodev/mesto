@@ -28,6 +28,7 @@ validPopupEdit.enableValidation();
 const validPopupAdd = new FormValidator(validation, popupAdd);
 validPopupAdd.enableValidation();
 const section = new Section({ items: initialCards, renderer: createElement }, '.elements');
+
 const popupImage = new PopupWithImage('.popup_photo');
 const popupAddForm = new PopupWithForm('.popup_add', formAdd);
 const userInfo = new UserInfo({ usernameSelector: '.profile__title', descriptionSelector: '.profile__subtitle' });
@@ -48,7 +49,7 @@ buttonOpenAdd.addEventListener('click', function() {
 
 function createElement(e) {
     const element = new Card(e.name, e.link, '.template__element', handlePhoto);
-    return element.generateCard();
+    section.addItem(element.generateCard());
 }
 
 function handlePhoto(description, image) {
@@ -63,7 +64,6 @@ function editForm(e) {
 
 function formAdd(e) {
     const element = createElement({ name: e.name, link: e.link }, '.elements');
-    section.addItem(element);
     popupAddForm.close();
 }
 
