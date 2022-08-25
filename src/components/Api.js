@@ -59,7 +59,7 @@ export default class Api {
             .then(this._check);
     }
 
-    removeLike(id) {
+    dislike(id) {
         return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/cards/likes/${id}`, {
                 method: 'DELETE',
                 headers: this._headers
@@ -76,11 +76,11 @@ export default class Api {
     }
 
     addNewAvatar(avatar) {
-        return fetch('', {
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-48/users/me/avatar', {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
-                    avatar: avatar
+                    avatar: avatar.url
                 })
             })
             .then(this._check);
