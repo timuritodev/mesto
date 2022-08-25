@@ -14,7 +14,9 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__photo" src="<%=require('./images/man.jpg')%>" alt="Фото профиля">
+            <div class="profile__avatar-container">
+                <img class="profile__photo" src="<%=require('./images/man.jpg')%>" alt="Фото профиля">
+            </div>
             <div class="profile__info">
                 <div class="profile__infos">
                     <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
@@ -94,7 +96,10 @@
         <img class="element__image " src="#">
         <div class="element__info ">
             <h2 class="element__title "></h2>
+            <div class="element__likes">
             <button class="element__like-button" type="button"></button>
+            <p class="element__like-counter"></p>
+            </div>
         </div>
     </div>
     </template>
