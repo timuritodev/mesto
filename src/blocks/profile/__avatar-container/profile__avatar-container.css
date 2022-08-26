@@ -9,8 +9,13 @@
 
 .profile__avatar-container::after {
     position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    background: url(../../../images/avatar.svg);
+    background: rgba(0, 0, 0, 0.7) url(../../../images/avatar.svg) center no-repeat;
     visibility: hidden;
 }
 
