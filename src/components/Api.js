@@ -20,7 +20,7 @@ export default class Api {
     }
 
     getCards() {
-        return fetch('GET https://mesto.nomoreparties.co/v1/cohort-48/cards', {
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-48/cards', {
                 method: 'GET',
                 headers: this._headers
             })
@@ -45,7 +45,7 @@ export default class Api {
                 headers: this._headers,
                 body: JSON.stringify({
                     name: name,
-                    about: link
+                    link: link
                 })
             })
             .then(this._check)

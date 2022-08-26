@@ -16,8 +16,10 @@ export const apiConfig = {
 }
 
 export const buttonOpenEdit = document.querySelector('.profile__edit-button');
+export const buttonOpenAdd = document.querySelector('.profile__add-button');
+export const buttonOpenAvatar = document.querySelector('.profile__avatar-container')
 export const popupEdit = document.querySelector('.popup_edit');
-export const popupAdd = document.querySelector('.popup_add')
+export const popupAdd = document.querySelector('.popup_add');
+export const popupAvatar = document.querySelector('.popup_avatar');
 export const fioInput = document.querySelector('.popup__input_fio');
 export const jobInput = document.querySelector('.popup__input_job');
-export const buttonOpenAdd = document.querySelector('.profile__add-button');
