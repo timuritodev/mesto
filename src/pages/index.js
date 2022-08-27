@@ -79,7 +79,7 @@ function createElement(item) {
                 console.log(err);
             })
     })
-    return section.addItem(element.createElement());
+    return section.addItem(element.generateCard());
 }
 
 Promise.all(([getUserInfoAll, getInitialCards]))
