@@ -79,7 +79,7 @@ function createElement(item) {
                 console.log(err);
             })
     })
-    return element.createElement();
+    return section.addItem(element.createElement());
 }
 
 Promise.all(([getUserInfoAll, getInitialCards]))
@@ -131,7 +131,7 @@ function addForm(item) {
     popupAddForm.renderLoading(true, 'Сохранить');
     api.addNewCard(item.name, item.link)
         .then(res => {
-            section.addItem(createElement(res));
+            createElement(res);
             popupAddForm.close();
         })
         .catch(err => {
