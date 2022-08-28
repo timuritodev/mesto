@@ -31,6 +31,9 @@ const popupAddForm = new PopupWithForm('.popup_add', addForm);
 const popupEditForm = new PopupWithForm('.popup_edit', editForm);
 
 const getUserInfoAll = api.getUserInfo();
+const getInitialCards = api.getCards();
+
+Promise.all(([getUserInfoAll, getInitialCards]))
 getUserInfoAll
     .then(res => {
         myId = res._id;
@@ -39,8 +42,6 @@ getUserInfoAll
     .catch(err => {
         console.log(err);
     })
-
-const getInitialCards = api.getCards();
 getInitialCards
     .then(res => {
         section.renderItems(res);
@@ -81,14 +82,6 @@ function createElement(item) {
     })
     return section.addItem(element.generateCard());
 }
-
-Promise.all(([getUserInfoAll, getInitialCards]))
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.log(err);
-    })
 
 buttonOpenEdit.addEventListener('click', function() {
     const { username, description } = userInfo.getUserInfo();
