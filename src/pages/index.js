@@ -30,21 +30,11 @@ const popupImage = new PopupWithImage('.popup_photo');
 const popupAddForm = new PopupWithForm('.popup_add', addForm);
 const popupEditForm = new PopupWithForm('.popup_edit', editForm);
 
-const getUserInfoAll = api.getUserInfo();
-const getInitialCards = api.getCards();
-
-Promise.all(([getUserInfoAll, getInitialCards]))
-getUserInfoAll
-    .then(res => {
-        myId = res._id;
-        userInfo.setUserInfo(res);
-    })
-    .catch(err => {
-        console.log(err);
-    })
-getInitialCards
-    .then(res => {
-        section.renderItems(res);
+Promise.all(([api.getUserInfo(), api.getCards()]))
+    .then(([userData, cards]) => {
+        myId = userData._id;
+        userInfo.setUserInfo(userData);
+        section.renderItems(cards);
     })
     .catch(err => {
         console.log(err);
