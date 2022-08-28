@@ -51,7 +51,7 @@ export default class Card {
 
     _setEventListeners() {
         this._likeButton.addEventListener('click', () => {
-            if (this._likeButton.classList.contains('element__like-button-active')) {
+            if (this._likeButton.classList.contains('element__like-button_active')) {
                 this._dislike();
             } else {
                 this._like();
@@ -65,7 +65,7 @@ export default class Card {
         }
 
         this._image.addEventListener('click', () => {
-            this._handlePhoto(this._title, this._link);
+            this._handlePhoto(this._name, this._link);
         });
     }
 
